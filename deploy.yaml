@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculator-server
+  template:
+    metadata:
+      labels:
+        app: calculator-server
+    spec:
+      containers:
+      - name: calculator-server
+        image: docker.io/example/calculator-server
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator
+spec:
+  selector:
+    app: calculator-server
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: calculator-client
+spec:
+  template:
+    spec:
+      containers:
+      - name: calculator-client
+        image: docker.io/example/calculator-client
+      restartPolicy: OnFailure
