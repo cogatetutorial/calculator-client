@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: calculator-server
-        image: docker.io/example/calculator-server
+        image: docker.io/cogatedemo/calculator-server
         ports:
         - containerPort: 8080
 ---
@@ -40,5 +40,5 @@ spec:
     spec:
       containers:
       - name: calculator-client
-        image: docker.io/example/calculator-client
+        image: docker.io/cogatedemo/calculator-client
       restartPolicy: OnFailure
