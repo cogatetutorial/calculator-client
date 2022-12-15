@@ -18,7 +18,7 @@ type result struct {
 }
 
 func main() {
-	op := operation{Operands: []int{1, 4}}
+	op := operation{Operands: []int{1, 3}}
 
 	data, _ := json.Marshal(op)
 	postBody := bytes.NewBuffer(data)
