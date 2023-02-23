@@ -1,6 +1,7 @@
 - image:
     registry: docker.io
     repository: cogatedemo/calculator-client
+    buildkit: true
 
 - deployment:
     name: deploy-calculator
